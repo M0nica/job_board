@@ -34,6 +34,9 @@ class JobsController < ApplicationController
     redirect_to jobs_path
   end
 
+  def show
+    @job = Job.find(params[:id])
+  end
 
   private # beginning of private methods -- anything below this line will be private
 
@@ -41,7 +44,7 @@ class JobsController < ApplicationController
 # whitlisting/specifying the fields that we want!
 
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :company)
   end
 
 end
